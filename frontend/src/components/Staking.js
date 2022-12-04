@@ -65,7 +65,7 @@ const Staking = (props) => {
           LP{props.page+1} Balance: {props.userBalance} LP{props.page+1}
         </h5>
         <h5 onClick={goMax} className={classes.goMax}>
-          ERT Balance: /t{props.rewardsBalance} ERT
+          ERT Balance: {props.rewardsBalance} ERT
         </h5>
         <h5>
           LP{props.page+1} Stake: {props.myStake} LP{props.page+1} 
