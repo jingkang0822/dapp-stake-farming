@@ -5,9 +5,10 @@ pragma solidity 0.8.4;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./RewardToken.sol";
 
-contract StakingManager is Ownable{
+contract StakingManager is Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20; // Wrappers around ERC20 operations that throw on failure
 
     RewardToken public rewardToken; // Token to be payed as reward
@@ -67,7 +68,7 @@ contract StakingManager is Ownable{
     /**
      * @dev Deposit tokens to an existing pool
      */
-    function deposit(uint256 _poolId, uint256 _amount) external {
+    function deposit(uint256 _poolId, uint256 _amount) external nonReentrant {
         require(_amount > 0, "Deposit amount can't be zero");
         Pool storage pool = pools[_poolId];
         PoolStaker storage staker = poolStakers[_poolId][msg.sender];
@@ -94,7 +95,7 @@ contract StakingManager is Ownable{
     /**
      * @dev Withdraw all tokens from an existing pool
      */
-    function withdraw(uint256 _poolId) external {
+    function withdraw(uint256 _poolId) external nonReentrant {
         Pool storage pool = pools[_poolId];
         PoolStaker storage staker = poolStakers[_poolId][msg.sender];
         uint256 amount = staker.amount;
