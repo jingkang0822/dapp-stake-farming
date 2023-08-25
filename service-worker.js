@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Dapp-Stake-Farming/precache-manifest.4dff5f4084f538b2249373d56218e92e.js"
+  "/dapp-stake-farming/precache-manifest.30cfc35d4c5825dad4f8275fb38353cc.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Dapp-Stake-Farming/index.html", {
+workbox.routing.registerNavigationRoute("/dapp-stake-farming/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
